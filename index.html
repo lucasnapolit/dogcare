@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cuidado de Perros — 5 Años de Experiencia</title>
+    <meta name="description" content="Cuidador de perros con 5 años de experiencia. Paseos, visitas a domicilio, alojamiento y administración de medicamentos. Accesible y pensado para móviles." />
+    <style>
+        :root{
+          --brown:#6d4c41;
+          --brown-dark:#5d4037;
+          --accent:#ffcc80;
+          --bg:#fdfcf7;
+          --soft:#f5f5f5;
+          --card:#ffffff;
+        }
+        html{scroll-behavior:smooth}
+        *{box-sizing:border-box}
+        body{font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin:0; background:var(--bg); color:#333; line-height:1.6}
+
+        /* NAVBAR */
+        nav{
+          position:fixed; inset:0 auto auto 0; width:100%; height:56px; display:flex; align-items:center; justify-content:center;
+          background:var(--brown); color:#fff; padding:8px 16px; box-shadow:0 2px 6px rgba(0,0,0,.25); z-index:1000
+        }
+        .logo{
+          position:fixed; left:10px; top:8px; height:40px; width:40px; z-index:1100; filter:drop-shadow(0 2px 2px rgba(0,0,0,.35));
+        }
+        .menu{display:flex; gap:14px; align-items:center; overflow-x:auto; -webkit-overflow-scrolling:touch; padding:0 8px}
+        .menu a{color:#fff; text-decoration:none; font-weight:700; white-space:nowrap; position:relative; padding:4px 2px; font-size:15px; letter-spacing:.2px; transition:color .25s}
+        .menu a::after{content:""; position:absolute; left:0; bottom:-3px; height:2px; width:0; background:var(--accent); transition:width .25s}
+        .menu a:hover{color:var(--accent)}
+        .menu a:hover::after{width:100%}
+
+        section{padding:56px 16px 28px; max-width:1000px; margin:0 auto; scroll-margin-top:72px}
+        .alt{background:var(--soft)}
+        h2{color:var(--brown-dark); text-align:center; margin:0 0 12px}
+
+        /* HERO */
+        .hero{margin-top:56px; height:60vh; min-height:360px; display:flex; align-items:center; justify-content:center; text-align:center; color:#fff; position:relative}
+        .hero::before{
+          content:""; position:absolute; inset:0; background:
+            linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.35)),
+            url('https://t3.ftcdn.net/jpg/02/89/92/16/240_F_289921607_ag36PDT4eoBMhDrJltec6DsVTFyzQD9r.jpg?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+        }
+        .hero h1{position:relative; font-size:clamp(22px,4.5vw,34px); font-weight:800; letter-spacing:.4px; line-height:1.25; padding:10px 14px; border-radius:10px; background:rgba(0,0,0,.35); backdrop-filter:saturate(140%) blur(1px)}
+        .hero p{position:relative; margin:10px 0 0; font-weight:600}
+
+        /* PARALLAX */
+        .parallax{min-height:130px; background-attachment:fixed; background-position:center; background-size:cover}
+        .p1{background-image:url('https://as1.ftcdn.net/jpg/02/11/41/78/1000_F_211417855_m3eWcjA0IXmtbLh5U0sFZZRrPfoAafQC.jpg?auto=format&fit=crop&w=1600&q=80')}
+        .p2{background-image:url('https://as1.ftcdn.net/jpg/16/41/59/54/1000_F_1641595415_F3E6IVN1RmwtCS3X4GQLi7n22UhRi349.webp?auto=format&fit=crop&w=1600&q=80')}
+
+        /* CARDS SERVICIOS */
+        .cards{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+        .card{background:var(--card); border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,.08); padding:14px; text-align:center; transition:transform .2s}
+        .card:hover{transform:translateY(-4px)}
+        .card img{width:100%; height:140px; object-fit:cover; border-radius:10px; margin-bottom:8px}
+        .card h3{margin:6px 0 6px}
+
+        .prices{max-width:720px; margin:0 auto; list-style:none; padding:0}
+        .prices li{background:var(--card); border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,.06); padding:12px 14px; margin:8px 0}
+
+        .review{display:flex; gap:12px; align-items:flex-start; background:var(--card); border-radius:12px; padding:12px; box-shadow:0 2px 8px rgba(0,0,0,.06); margin:12px 0}
+        .review img{width:56px; height:56px; border-radius:50%; flex:0 0 56px}
+        .stars{letter-spacing:1px}
+
+        .faq{max-width:900px; margin:0 auto}
+        .faq li{margin:10px 0; padding:10px; background:var(--card); border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,.05)}
+
+        form{background:var(--card); padding:16px; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,.08); max-width:680px; margin:0 auto}
+        label{display:block; margin:10px 0 6px; font-weight:700}
+        input,select,textarea{width:100%; padding:10px; border:1px solid #ccc; border-radius:8px; font-size:16px}
+        textarea{resize:vertical}
+        .actions{display:flex; gap:10px; flex-wrap:wrap}
+        button{appearance:none; border:0; padding:12px 16px; border-radius:10px; background:var(--brown); color:#fff; font-weight:800; cursor:pointer}
+        button:hover{background:var(--brown-dark)}
+        .thanks{display:none; text-align:center; color:green; margin-top:12px; font-weight:800}
+
+        .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease}
+        .reveal.visible{opacity:1; transform:none}
+
+        footer{background:var(--brown-dark); color:#fff; text-align:center; padding:14px; margin-top:24px}
+
+        @media (min-width:768px){
+          .hero{height:70vh}
+          .cards{grid-template-columns:repeat(4,1fr)}
+          .parallax{min-height:160px}
+          .menu{gap:18px}
+        }
+    </style>
+</head>
+<body>
+<nav aria-label="Barra de navegación">
+    <a href="#hero" aria-label="Ir al inicio">
+        <img class="logo" src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Logo perro" />
+    </a>
+    <div class="menu" role="navigation">
+        <a href="#quien-soy">Quiénes somos</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#tarifas">Tarifas</a>
+        <a href="#reseñas">Testimonios</a>
+        <a href="#faq">Preguntas</a>
+        <a href="#contacto">Contacto</a>
+    </div>
+</nav>
+
+<header id="hero" class="hero">
+    <div class="reveal">
+        <h1>Cuidado responsable y amoroso para tu perro</h1>
+        <p>5 años de experiencia • Atención personalizada • Confianza</p>
+    </div>
+</header>
+
+<section id="quien-soy" class="alt reveal">
+    <h2>Quiénes somos</h2>
+    <p>¡Hola! Somos <strong>Gri y Lucas </strong>. Desde hace más de <strong>5 años</strong> cuidamos perros con mucho amor , y entendemos lo importante que son en la vida de una persona .
+        Para nosotros no son mascotas, sino familia.
+        Ofrecemos un cuidado sin jaulas , personalizado , y como maximo un perrito a la vez para que se sientan tranquilos , acompañados y en confianza.</p>
+        <p>
+        Hacemos paseos de minimo a una hora adaptados a su ritmo y necesidades, visitas a domicilio y alojamiento con reportes (fotos y mensajes) para que estés siempre tranquilo.</p>
+        Cuidar perro no es solo un trabajo para nosotros sino una forma de compartir tiempo con seres nobles ,
+        expontaneos y sensibles que nos enseñan a estar presentes. Sabemos lo dificil que es dejar a tu
+        mascota con alguien , por eso nos tomamos el compromiso con total responsabilidad y cariño.
+</section>
+
+<div class="parallax p1" aria-hidden="true"></div>
+
+<section id="servicios" class="reveal">
+    <h2>Servicios</h2>
+    <div class="cards">
+        <article class="card reveal">
+            <img src="https://images.unsplash.com/photo-1505628346881-b72b27e84530?auto=format&fit=crop&w=600&q=80" alt="Paseos con perros" />
+            <h3>Paseos</h3>
+            <p>Caminatas de 60 minutos para bienestar físico y mental.</p>
+        </article>
+        <article class="card reveal">
+            <img src="https://as1.ftcdn.net/jpg/13/76/52/74/1000_F_1376527484_LYA59D4IElElize2hPYtEpR4cjxtPvUX.jpg" alt="Visitas a domicilio" />
+            <h3>Visitas a domicilio</h3>
+            <p>Alimentación, juegos y compañía en su hogar.</p>
+        </article>
+        <article class="card reveal">
+            <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=600&q=80" alt="Alojamiento en casa" />
+            <h3>Alojamiento</h3>
+            <p>Estadías por noche con atención personalizada.</p>
+        </article>
+        <article class="card reveal">
+            <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=600&q=80" alt="Administración de medicamentos" />
+            <h3>Medicamentos</h3>
+            <p>Administración siguiendo indicaciones del veterinario.</p>
+        </article>
+    </div>
+</section>
+
+<div class="parallax p2" aria-hidden="true"></div>
+
+<section id="tarifas" class="alt reveal">
+    <h2>Tarifas</h2>
+    <ul class="prices">
+
+        <li><strong>Paseo largo (1 hora):</strong> $12</li>
+        <li><strong>Visita a domicilio:</strong> $15</li>
+        <li><strong>Alojamiento por noche:</strong> $20</li>
+    </ul>
+    <p style="text-align:center"><em>*Precios orientativos, adaptables según la necesidad de tu mascota.</em></p>
+</section>
+
+<section id="reseñas" class="reveal">
+    <h2>Testimonios</h2>
+    <div class="review reveal">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Cliente Ana" />
+        <div>
+            <p><strong>Ana G.</strong> <span class="stars">★★★★★</span></p>
+            <p>“Excelente servicio, mi perrita estaba feliz y tranquila. Muy recomendable.”</p>
+        </div>
+    </div>
+    <div class="review reveal">
+        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Cliente Carlos" />
+        <div>
+            <p><strong>Carlos M.</strong> <span class="stars">★★★★★</span></p>
+            <p>“Muy puntual y cariñoso con mi perro. Sin duda volveré a contactarlo.”</p>
+        </div>
+    </div>
+    <div class="review reveal">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cliente Laura" />
+        <div>
+            <p><strong>Laura P.</strong> <span class="stars">★★★★★</span></p>
+            <p>“Se nota que ama a los animales. Mi perro estuvo contento todo el tiempo.”</p>
+        </div>
+    </div>
+    <div class="review reveal">
+        <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Cliente Javier" />
+        <div>
+            <p><strong>Javier R.</strong> <span class="stars">★★★★★</span></p>
+            <p>“Muy profesional, recibí fotos y actualizaciones mientras cuidaba a mi perro.”</p>
+        </div>
+    </div>
+    <div class="review reveal">
+        <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Cliente Sofía" />
+        <div>
+            <p><strong>Sofía L.</strong> <span class="stars">★★★★★</span></p>
+            <p>“Me dio muchísima tranquilidad, mi perro estaba en excelentes manos.”</p>
+        </div>
+    </div>
+</section>
+
+<section id="faq" class="alt reveal">
+    <h2>Preguntas Frecuentes</h2>
+    <ul class="faq">
+        <li><strong>¿Cuántos perros puedes cuidar a la vez?</strong><br> Normalmente 1 o 2 para dar atención personalizada.</li>
+        <li><strong>¿Aceptas perros de cualquier tamaño?</strong><br> Sí, desde cachorros hasta perros adultos.</li>
+        <li><strong>¿Qué debo llevar si dejo a mi perro contigo?</strong><br> Su comida, correa, cama o manta favorita , medicamentos si los necesita, para que pueda seguir con su rutina.</li>
+        <li><strong>¿Cómo sé que mi perro está bien?</strong><br> Envío fotos y actualizaciones durante el día para tu tranquilidad.</li>
+    </ul>
+</section>
+
+<section id="contacto" class="reveal">
+    <h2>Solicitud de Servicio</h2>
+    <form id="solicitud" onsubmit="enviar(event)">
+
+
+        <label for="nombreProp"> Nombre del propietario</label>
+        <input id="nombreProp" name="nombreProp" type ="text" required/>
+
+
+        <label for="perro">Email o whatsapp del propietario (Lo usaremos para contactarnos ) </label>
+        <input id="perro" name="perro" type="text" required />
+
+        <label for="edad">Edad de tu perro </label>
+
+        <select id="edad" name="edad" required>
+            <option value="">selecione la edad</option>
+            <option>Cachorro</option>
+            <option>Adulto</option>
+            <option>Adulto mayor</option>
+
+        </select>
+
+        <label for="servicio">Servicio</label>
+        <select id="servicio" name="servicio" required>
+            <option value="">Seleccione un servicio</option>
+            <option>Paseo</option>
+            <option>Visita a domicilio</option>
+            <option>Alojamiento</option>
+
+        </select>
+
+        <label for="comentario">Comentario</label>
+        <textarea id="comentario" name="comentario" rows="4" placeholder="Cuéntame horarios, costumbres o indicaciones"></textarea>
+
+        <div class="actions">
+            <button type="submit" data-modo="whatsapp">Enviar por WhatsApp</button>
+            <button type="button" onclick="enviarEmail()">Enviar por Email</button>
+        </div>
+        <p class="thanks" id="gracias">¡Gracias! Nos contactaremos a la brevedad.</p>
+    </form>
+</section>
+
+<footer>
+    <p>© 2025 — Cuidado de Perros con Amor</p>
+</footer>
+
+<script>
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); } });
+    }, {threshold:0.15});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+    function enviar(e){
+      e.preventDefault();
+      const perro = document.getElementById('perro').value.trim();
+      const nombreProp = document.getElementById('nombreProp').value.trim();
+      const edad = document.getElementById('edad').value.trim();
+      const servicio = document.getElementById('servicio').value.trim();
+      const comentario = document.getElementById('comentario').value.trim();
+      const texto = `Solicitud de servicio:%0A🐶 Perro: ${perro}%0AEdad: ${edad} años%0AServicio: ${servicio}%0AComentario: ${encodeURIComponent(comentario)}`;
+      const numero = '34623740491'; // ← REEMPLAZAR con tu número real
+      window.open(`https://wa.me/${numero}?text=${texto}`, '_blank');
+      document.getElementById('gracias').style.display='block';
+    }
+
+    function enviarEmail(){
+      const perro = document.getElementById('perro').value.trim();
+      const nombreProp = document.getElementById('nombreProp').value.trim();
+      const edad = document.getElementById('edad').value.trim();
+      const servicio = document.getElementById('servicio').value.trim();
+      const comentario = document.getElementById('comentario').value.trim();
+      const asunto = `Solicitud de servicio — ${perro || 'Perro'}`;
+      const cuerpo = `Solicitud de servicio:\\n🐶 Contacto: ${perro}\\nEdad: ${edad} \\nNombre: ${nombreProp}\\nServicio: ${servicio}\\nComentario: ${comentario}`;
+      window.location.href = `mailto:grigulino@gmail.com?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
+      document.getElementById('gracias').style.display='block';
+    }
+</script>
+</body>
+</html>
