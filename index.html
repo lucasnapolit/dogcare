@@ -47,7 +47,10 @@
         .hero p{position:relative; margin:10px 0 0; font-weight:600}
 
         /* PARALLAX */
-        .parallax{min-height:130px; background-attachment:fixed; background-position:center; background-size:cover}
+        .parallax{min-height:130px;
+        background-attachment:fixed;
+         background-position:center;
+         background-size:cover}
         .p1{background-image:url('https://as1.ftcdn.net/jpg/02/11/41/78/1000_F_211417855_m3eWcjA0IXmtbLh5U0sFZZRrPfoAafQC.jpg?auto=format&fit=crop&w=1600&q=80')}
         .p2{background-image:url('https://as1.ftcdn.net/jpg/16/41/59/54/1000_F_1641595415_F3E6IVN1RmwtCS3X4GQLi7n22UhRi349.webp?auto=format&fit=crop&w=1600&q=80')}
 
@@ -88,6 +91,11 @@
           .parallax{min-height:160px}
           .menu{gap:18px}
         }
+        @media (max-width: 768px) {
+  .parallax {
+    background-attachment: scroll; /* desactiva el parallax */
+  }
+}
     </style>
 </head>
 <body>
@@ -158,9 +166,9 @@
     <h2>Tarifas</h2>
     <ul class="prices">
 
-        <li><strong>Paseo largo (1 hora):</strong> $12</li>
-        <li><strong>Visita a domicilio:</strong> $15</li>
-        <li><strong>Alojamiento por noche:</strong> $20</li>
+        <li><strong>Paseo largo (1 hora):</strong> €12</li>
+        <li><strong>Visita a domicilio:</strong> €15</li>
+        <li><strong>Alojamiento por noche:</strong> €20</li>
     </ul>
     <p style="text-align:center"><em>*Precios orientativos, adaptables según la necesidad de tu mascota.</em></p>
 </section>
@@ -273,7 +281,7 @@
       const edad = document.getElementById('edad').value.trim();
       const servicio = document.getElementById('servicio').value.trim();
       const comentario = document.getElementById('comentario').value.trim();
-      const texto = `Solicitud de servicio:%0A🐶 Perro: ${perro}%0AEdad: ${edad} años%0AServicio: ${servicio}%0AComentario: ${encodeURIComponent(comentario)}`;
+      const texto = `Solicitud de servicio:%Perro: ${perro}%0AEdad: ${edad} años%0AServicio: ${servicio}%0AComentario: ${encodeURIComponent(comentario)}`;
       const numero = '34623740491'; // ← REEMPLAZAR con tu número real
       window.open(`https://wa.me/${numero}?text=${texto}`, '_blank');
       document.getElementById('gracias').style.display='block';
